@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="360.0" y="235.0">jm.task.core.jdbc.Main</node>
+    <node x="0.0" y="235.0">jm.task.core.jdbc.model.User</node>
+    <node x="150.99999999999997" y="170.0">jm.task.core.jdbc.service.UserServiceImpl</node>
+    <node x="135.99999999999997" y="0.0">jm.task.core.jdbc.dao.UserDao</node>
+    <node x="416.0" y="80.0">jm.task.core.jdbc.service.UserService</node>
+    <node x="187.99999999999997" y="80.0">jm.task.core.jdbc.dao.UserDaoHibernateImpl</node>
+    <node x="0.0" y="80.0">jm.task.core.jdbc.dao.UserDaoJDBCImpl</node>
+    <node x="179.0" y="235.0">jm.task.core.jdbc.util.Util</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="jm.task.core.jdbc.service.UserServiceImpl" target="jm.task.core.jdbc.service.UserService">
+      <point x="42.0" y="-15.0" />
+      <point x="326.0" y="135.0" />
+      <point x="484.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="jm.task.core.jdbc.dao.UserDaoHibernateImpl" target="jm.task.core.jdbc.dao.UserDao">
+      <point x="0.0" y="-15.0" />
+      <point x="292.0" y="55.0" />
+      <point x="213.99999999999997" y="55.0" />
+      <point x="26.0" y="15.0" />
+    </edge>
+    <edge source="jm.task.core.jdbc.service.UserServiceImpl" target="jm.task.core.jdbc.dao.UserDaoJDBCImpl">
+      <point x="-42.0" y="-15.0" />
+      <point x="241.99999999999997" y="135.0" />
+      <point x="84.0" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="jm.task.core.jdbc.dao.UserDaoJDBCImpl" target="jm.task.core.jdbc.dao.UserDao">
+      <point x="0.0" y="-15.0" />
+      <point x="84.0" y="55.0" />
+      <point x="161.99999999999997" y="55.0" />
+      <point x="-26.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="598.5" y="243.5" />
+  <SelectedNodes>
+    <node>jm.task.core.jdbc.service.UserServiceImpl</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
