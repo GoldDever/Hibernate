@@ -2,12 +2,21 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.Util;
+
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
+
         UserServiceImpl userService = new UserServiceImpl();
+
+        try (Connection connection = Util.getBaseConnaction()){
+            connection.setAutoCommit(false);
+
         userService.createUsersTable();
 
         User user = new User("Andrew", "Loginov", (byte) 25);
@@ -27,6 +36,9 @@ public class Main {
         userService.cleanUsersTable();
         userService.dropUsersTable();
 
-
+        connection.commit();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }
