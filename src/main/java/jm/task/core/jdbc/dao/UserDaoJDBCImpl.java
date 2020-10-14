@@ -25,7 +25,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        System.out.println("Таблица создана");
     }
 
     public void dropUsersTable() {
