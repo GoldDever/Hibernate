@@ -13,10 +13,6 @@ public class Main {
     public static void main(String[] args) {
 
         UserServiceImpl userService = new UserServiceImpl();
-
-        try (Connection connection = Util.getBaseConnaction()){
-            connection.setAutoCommit(false);
-
         userService.createUsersTable();
 
         User user = new User("Andrew", "Loginov", (byte) 25);
@@ -35,10 +31,5 @@ public class Main {
 
         userService.cleanUsersTable();
         userService.dropUsersTable();
-
-        connection.commit();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
     }
 }

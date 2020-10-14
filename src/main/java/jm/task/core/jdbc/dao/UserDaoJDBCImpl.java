@@ -21,7 +21,9 @@ public class UserDaoJDBCImpl implements UserDao {
                                    "name VARCHAR(255) NOT NULL, lastName varchar (255) NOT NULL, age TINYINT(10), PRIMARY KEY(id))";
         try (Connection connection = Util.getBaseConnaction();
               Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             statement.executeUpdate(str);
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -30,7 +32,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void dropUsersTable() {
         String str ="DROP TABLE IF EXISTS SuperTable";
         try (Connection connection = Util.getBaseConnaction(); Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             statement.executeUpdate(str);
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -39,7 +43,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         String str = "INSERT INTO SuperTable(name, lastName, age) VALUES('" + name + "','" + lastName + "'," + age + ")";
         try (Connection connection = Util.getBaseConnaction(); Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             statement.executeUpdate(str);
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -49,7 +55,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void removeUserById(long id) {
         String str = "DELETE FROM SuperTable WHERE id = " + id;
         try (Connection connection = Util.getBaseConnaction(); Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             statement.executeUpdate(str);
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -59,6 +67,7 @@ public class UserDaoJDBCImpl implements UserDao {
         List<User> list = new ArrayList<>();
         ResultSet resultSet = null;
         try (Connection connection = Util.getBaseConnaction(); Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             resultSet = statement.executeQuery("select * from SuperTable");
             while (resultSet.next()) {
                 String name = resultSet.getString("name");
@@ -67,6 +76,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 User user = new User(name, surname, (byte) age);
                 list.add(user);
             }
+            connection.commit();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -77,7 +87,9 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         String str = "TRUNCATE TABLE SuperTable";
         try (Connection connection = Util.getBaseConnaction(); Statement statement = connection.createStatement()){
+            connection.setAutoCommit(false);
             statement.executeUpdate(str);
+            connection.commit();
         } catch (SQLException throwables) {
 
         }
