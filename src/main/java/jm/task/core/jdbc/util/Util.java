@@ -1,5 +1,10 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,6 +24,21 @@ public class Util {
             throwables.printStackTrace();
         }
         return con;
+    }
+
+    public static SessionFactory getSession() {
+        Configuration configuration = new Configuration()
+                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
+                .setProperty("hibernate.connection.url", url)
+                .setProperty("hibernate.connection.username", user)
+                .setProperty("hibernate.connection.password", password)
+                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
+                .setProperty("hibernate.show_sql", "true")
+                //.setProperty("hibernate.current_session_context_class", "thread")
+               // .setProperty("hibernate.hbm2ddl.auto", "create")
+                .addAnnotatedClass(User.class);
+        SessionFactory sessionFactory = configuration.buildSessionFactory();
+        return sessionFactory;
     }
 }
 
