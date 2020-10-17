@@ -34,8 +34,7 @@ public class Util {
                 .setProperty("hibernate.connection.password", password)
                 .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
                 .setProperty("hibernate.show_sql", "true")
-                //.setProperty("hibernate.current_session_context_class", "thread")
-               // .setProperty("hibernate.hbm2ddl.auto", "create")
+
                 .addAnnotatedClass(User.class);
         SessionFactory sessionFactory = configuration.buildSessionFactory();
         return sessionFactory;
